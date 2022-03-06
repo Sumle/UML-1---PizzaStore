@@ -6,4 +6,10 @@
     <RootNamespace>UML_1___PizzaStore</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="Store.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
 </Project>

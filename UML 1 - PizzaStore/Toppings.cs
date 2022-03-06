@@ -32,6 +32,14 @@ namespace UML_1___PizzaStore
         #endregion
 
         #region
+        public static string FormatString()
+        {
+            return "{0, -15} {1, -25}";
+        }
+        public override string ToString()
+        {
+            return base.ToString() + "My Toppings";
+        }
         #endregion
     }
 }

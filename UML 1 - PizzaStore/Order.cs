@@ -7,54 +7,82 @@ namespace UML_1___PizzaStore
     public class Order
     {
         #region
-        private int _numberOfPizza;
         private double _taxPct;
         private double _deliveryCost;
-        Pizza pizza;
+        private Customer _customer;
+        private Pizza _pizza;
+        private Toppings _toppings;
         #endregion
 
         #region
-        public Order()
+        public Order(Customer customer, Pizza pizza, Toppings toppings)
         {
-            _numberOfPizza = 0;
-            _taxPct = 0.0;
-            _deliveryCost = 0.0;
-            pizza = new Pizza();
+            _taxPct = 0.10;
+            _deliveryCost = 40;
+            _customer = customer;
+            _pizza = pizza;
+            _toppings = toppings;
         }
         #endregion
 
         #region
-        public int NumberOfPizza
-        {
-            get { return _numberOfPizza; }
-            set { _numberOfPizza = value; }
-        }
-
         public double TaxPct
         {
-            get { return _taxPct; }
-            set { _taxPct = value; }
+            get
+            {
+                return _taxPct * 100;
+            }
         }
 
         public double DeliveryCost
         {
             get { return _deliveryCost; }
-            set { _deliveryCost = value; }
         }
+
         #endregion
 
         #region
-        public double CalculateTotalPrice()
+        public string FormatString()
         {
-
+            return "{0, -15} {1, -24} {2, -25} {3, -50}";
+        }
+        public void Text()
+        {
+            Console.WriteLine($"{FormatString()}", "Full Name;", $"{_customer.Name}", $"{_pizza.NameOfPizza}", $"{_pizza.PriceOfPizza}kr");
+            Console.WriteLine($"{FormatString()}", "Adress:", $"{_customer.Adress}", $"{_toppings.NameOfEkstraTopping}", $"{_toppings.PriceOfEkstraTopping}kr");
+            Console.WriteLine($"{FormatString()}", "Email:", $"{_customer.Mail}", $" ", $" ");
+            Console.WriteLine($"{FormatString()}", "Phonenumber:", $"{_customer.PhoneNumber}", $" ", $" ");
+            Console.WriteLine($"{FormatString()}", "Town:", $"{_customer.Town}", $" ", $" ");
+            Console.WriteLine($"{FormatString()}", "Housenumber:", $"{_customer.StreetNumber}", $" ", $" ");
+            Console.WriteLine($"{FormatString()}", "Postalnumber:", $"{_customer.PostalNumber}", $" ", $" ");
+            Console.WriteLine();
+            Console.WriteLine("{0, 93}", $"Total (inkl. 40 kr delivery");
+            Console.WriteLine("{0, 93}", $"and 10% tax):");
+            Console.WriteLine("{0, 93}", $"{CalculateTotalPrice()}");
+            Console.WriteLine("{0, 93}", "_____");
         }
 
-        public static string ToString()
+        public override string ToString()
         {
-            return $"Number of pizzas bought is: {Pizza}, and the cost is: {TotalPrice} and that is including tax and deliverycost.";
+            return base.ToString() + "My Orders";
+        }
+
+        public double CalculateTotalPrice()
+        {
+            double totalPrice = (_pizza.PriceOfPizza + _toppings.PriceOfEkstraTopping + DeliveryCost) * (_taxPct + 1);
+            return totalPrice;
+        }
+
+        public static string FormatAnotherString()
+        {
+            return "{0, -40} {1, -25} {2, -20}";
+        }
+
+        public void PrintOrderInfo()
+        {
+            Console.WriteLine($"{FormatAnotherString()}", "Info about Customer:", "Info about order:", "Price:");
+            Text();
         }
         #endregion
     }
-    //en funktion kaldet CalculateTotalPrice
-    //3 ordre objekter med forskellige pizzaer
 }

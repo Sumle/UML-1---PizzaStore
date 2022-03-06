@@ -6,42 +6,37 @@ namespace UML_1___PizzaStore
 {
     public class Pizza
     {
-        #region Instance fields 
+        #region 
         private string _nameOfPizza;
         private int _priceOfPizza;
         #endregion
 
-        #region Constructor
-        public Pizza()
+        #region 
+        public Pizza(string NameOfPizza, int priceOfPizza)
         {
-            _nameOfPizza = "";
-            _priceOfPizza = 0;
+            _nameOfPizza = NameOfPizza;
+            _priceOfPizza = priceOfPizza;
         }
         #endregion
 
-        #region Properties
+        #region 
         public string NameOfPizza
         {
             get { return _nameOfPizza; }
-            set { _nameOfPizza = value; }
         }
 
         public int PriceOfPizza
         {
             get { return _priceOfPizza; }
-            set { _priceOfPizza = value; }
         }
         #endregion
 
-        #region Methods
-        public static string ToString()
+        #region 
+        public override string ToString()
         {
-            Pizza pizza1 = new Pizza();
-            Console.WriteLine(pizza1);
-            return $"Name: {pizza1} - Price: {Price}";
+            return base.ToString() + "My Pizzas";
         }
 
         #endregion
     }
-    //3 pizzaer
 }

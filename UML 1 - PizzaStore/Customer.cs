@@ -6,17 +6,18 @@ namespace UML_1___PizzaStore
 {
     public class Customer
     {
-        #region instance fields
+        #region 
         private string _name;
         private string _phoneNumber;
         private string _mail;
         private string _adress;
         private int _streetNumber;
         private int _postalNumber;
+        private string _town;
         #endregion
 
-        #region constructor
-        public Customer(string name, string phoneNumber, string mail, string adress, int streetNumber, int postalNumber)
+        #region 
+        public Customer(string name, string phoneNumber, string mail, string adress, int streetNumber, int postalNumber, string town)
         {
             _name = name;
             _phoneNumber = phoneNumber;
@@ -24,10 +25,11 @@ namespace UML_1___PizzaStore
             _adress = adress;
             _streetNumber = streetNumber;
             _postalNumber = postalNumber;
+            _town = town;
         }
         #endregion
 
-        #region properties
+        #region 
         public string Name
         {
             get { return _name; }
@@ -52,10 +54,27 @@ namespace UML_1___PizzaStore
         {
             get { return _streetNumber; }
         }
+
+        public int PostalNumber
+        {
+            get { return _postalNumber; }
+        }
+
+        public string Town
+        {
+            get { return _town; }
+        }
         #endregion
 
         #region
+        public static string FormatString()
+        {
+            return "{0, -15} {1, -25}";
+        }
+        public override string ToString()
+        {
+            return base.ToString() + "My Customers";
+        }
         #endregion
     }
-    //3 kunde objekter
 }
